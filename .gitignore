@@ -10,4 +10,6 @@ Makefile
 ehthumbs.db
 Thumbs.db
 .fuse_hidden*
-
+build-rts3917n
+*.bin
+*.o
