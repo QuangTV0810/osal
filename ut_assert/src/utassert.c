@@ -183,6 +183,7 @@ void UtAssert_EndTest(void)
         /*
          * note, strcpy is OK because both are fixed size buffers of the same size,
          * and the null termination on CurrentSegment was locally enforced already
+         * SAD: This should be ignored by CodeSonar.
          */
         strcpy(Local_SegmentName, CurrentSegment);
     }

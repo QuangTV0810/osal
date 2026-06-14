@@ -70,6 +70,10 @@ struct OS_shared_global_vars
 #ifdef OSAL_CONFIG_DEBUG_PRINTF
     uint8 DebugLevel;
 #endif
+    /*
+     * The numbers of cores configured recognized by the OS
+     */
+    uint32 CoresConfigured;
 };
 
 /*

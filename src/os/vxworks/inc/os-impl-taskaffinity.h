@@ -18,28 +18,27 @@
 
 /**
  * \file
- * \ingroup  ut-stubs
- * \author   joseph.p.hickey@nasa.gov
+ *
+ * \ingroup  vxworks
  *
  */
-#include <string.h>
-#include <stdlib.h>
-#include "utstubs.h"
 
-#include "os-shared-common.h"
-#include "OCS_semLib.h"
+#ifndef OS_IMPL_TASKAFFINITY_H
+#define OS_IMPL_TASKAFFINITY_H
 
-int32 OS_API_Impl_Init(osal_objtype_t idtype)
+/* VxWorks Native Headers */
+#include <vxWorks.h>
+#include <taskLib.h>
+
+#include "common_types.h"
+
+/* Explicitly declare to avoid implicit declaration warnings */
+extern unsigned int vxCpuConfiguredGet(void);
+
+/* Define the function used by the OSAL initialization */
+static inline uint32 OS_TaskAffinity_Proc_Conf(void)
 {
-    return UT_DEFAULT_IMPL(OS_API_Impl_Init);
+    return (uint32)vxCpuConfiguredGet();
 }
 
-int OS_VxWorks_GenericSemTake(OCS_SEM_ID vxid, int sys_ticks)
-{
-    return UT_DEFAULT_IMPL(OS_VxWorks_GenericSemTake);
-}
-
-int OS_VxWorks_GenericSemGive(OCS_SEM_ID vxid)
-{
-    return UT_DEFAULT_IMPL(OS_VxWorks_GenericSemGive);
-}
+#endif /* OS_IMPL_TASKAFFINITY_H */

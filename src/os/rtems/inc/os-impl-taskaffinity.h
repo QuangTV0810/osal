@@ -18,28 +18,24 @@
 
 /**
  * \file
- * \ingroup  ut-stubs
- * \author   joseph.p.hickey@nasa.gov
+ *
+ * \ingroup  rtems
  *
  */
-#include <string.h>
-#include <stdlib.h>
-#include "utstubs.h"
 
-#include "os-shared-common.h"
-#include "OCS_semLib.h"
+#ifndef OS_IMPL_TASKAFFINITY_H
+#define OS_IMPL_TASKAFFINITY_H
 
-int32 OS_API_Impl_Init(osal_objtype_t idtype)
+#include <pthread.h>
+#include <rtems.h>
+#include <rtems/score/smpimpl.h>
+
+#include "common_types.h"
+
+/* Define the function used by the OSAL initialization */
+static inline uint32 OS_TaskAffinity_Proc_Conf(void)
 {
-    return UT_DEFAULT_IMPL(OS_API_Impl_Init);
+    return (uint32)rtems_scheduler_get_processor_maximum();
 }
 
-int OS_VxWorks_GenericSemTake(OCS_SEM_ID vxid, int sys_ticks)
-{
-    return UT_DEFAULT_IMPL(OS_VxWorks_GenericSemTake);
-}
-
-int OS_VxWorks_GenericSemGive(OCS_SEM_ID vxid)
-{
-    return UT_DEFAULT_IMPL(OS_VxWorks_GenericSemGive);
-}
+#endif /* OS_IMPL_TASKAFFINITY_H */

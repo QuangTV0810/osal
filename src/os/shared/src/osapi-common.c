@@ -65,6 +65,7 @@ OS_SharedGlobalVars_t OS_SharedGlobalVars = {
 #if defined(OSAL_CONFIG_DEBUG_PRINTF)
     .DebugLevel = 1,
 #endif
+    .CoresConfigured = 1,
 };
 
 /*----------------------------------------------------------------
